@@ -24,11 +24,22 @@
 - name: anacondaをインストール
   args:
     creates: ~/.pyenv/versions/anaconda3-4.3.0
-  shell: |
-    pyenv install anaconda3-4.3.0
-    pyenv rehash
-    pyenv global anaconda3-4.3.0
-    conda update conda
+  shell: bash -lc "pyenv install anaconda3-4.3.0"
+ 
+- name: anaconda rehash
+  args:
+    creates: ~/.pyenv/versions/anaconda3-4.3.0
+  shell: bash -lc "pyenv rehash"
+  
+- name: anaconda global
+  args:
+    creates: ~/.pyenv/versions/anaconda3-4.3.0
+  shell: bash -lc "pyenv global anaconda3-4.3.0"
+  
+- name: anaconda update
+  args:
+    creates: ~/.pyenv/versions/anaconda3-4.3.0
+  shell: bash -lc "conda update conda"
 
 - name: python2.7インストール可否チェック
   shell: bash -lc "conda info -e | grep 'python2.7'"

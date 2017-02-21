@@ -8,3 +8,6 @@
   - zsh
   - zip
   - ubuntu-desktop
+  - build-essential
+  - make
+  - ubuntu-make
