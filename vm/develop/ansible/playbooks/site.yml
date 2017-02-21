@@ -7,5 +7,6 @@
 
 - hosts: develop
   become: yes
+  roles:
     - { role: tersmitten.pycharm }
     - { role: ansible-clion }
