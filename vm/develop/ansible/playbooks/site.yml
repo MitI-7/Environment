@@ -4,5 +4,8 @@
     - { role: package }
     - { role: common }
     - { role: develop }
+
+- hosts: develop
+  become: yes
     - { role: tersmitten.pycharm }
     - { role: ansible-clion }

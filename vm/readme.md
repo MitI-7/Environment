@@ -1,4 +1,9 @@
 
+1. vagrant plugin
+```
+vagrant plugin install vagrant-vbguest
+```
+
 1. ansibleからdevelopにsshできるようにする
 ```
 vagrant up ansible
