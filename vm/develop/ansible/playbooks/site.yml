@@ -1,0 +1,8 @@
+---
+- hosts: develop
+  roles:
+    - { role: package }
+    - { role: common }
+    - { role: develop }
+    - { role: tersmitten.pycharm }
+    - { role: ansible-clion }
