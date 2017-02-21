@@ -30,7 +30,7 @@ Vagrant.configure(2) do |config|
       sudo apt-get install git -y
       
       git clone https://github.com/MitI-7/Environment.git /home/vagrant/environment
-      mv ~/environment/vm/develop/ansible /home/vagrant/ansible
+      mv /home/vagrant/environment/vm/develop/ansible /home/vagrant/ansible
       git clone https://github.com/MitI-7/ansible-clion.git /home/vagrant/ansible/playbooks/roles/ansible-clion
       ansible-galaxy install tersmitten.pycharm -p /home/vagrant/ansible/playbooks/roles
       git clone https://github.com/MitI-7/ansible-clion.git /home/vagrant/ansible/playbooks/roles/ansible-clion
