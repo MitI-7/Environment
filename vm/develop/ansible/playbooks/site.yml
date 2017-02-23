@@ -8,5 +8,6 @@
 - hosts: develop
   become: yes
   roles:
+    - { role: cmprescott.chrome}
     - { role: tersmitten.pycharm }
     - { role: ansible-clion }

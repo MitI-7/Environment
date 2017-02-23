@@ -1,0 +1,12 @@
+---
+- name: get topcoder arena
+  get_url: url= http://www.topcoder.com/contest/arena/ContestAppletProd.jnlpnload_url }} dest=/opt/ContestAppletProd.jnlp
+  
+- name: git clone competitive programming
+  git: repo=git@github.com:MitI-7/CompetitiveProgramming.git
+  dest=~/src/ version=master
+
+- name: git clone competitive programming
+  git: repo=git@github.com:MitI-7/Environment.git
+  dest=~/src/ version=master
+  

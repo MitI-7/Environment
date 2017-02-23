@@ -15,7 +15,12 @@ vagrant ssh ansible
 chmod 600 .ssh/id_rsa
 ```
 
-2. ansibleの実行
+2. sshできるか確認
+```
+ansible -i hosts 192.168.33.12 -m ping
+```
+
+3. ansibleの実行
 ```
 cd ~/ansible/playbooks
 ansible-playbook -i ../hosts site.yml
