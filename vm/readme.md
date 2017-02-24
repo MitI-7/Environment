@@ -9,15 +9,16 @@ vagrant plugin install vagrant-vbguest
 vagrant up ansible
 vagrant up develop
 vagrant provision
-vagrant ssh-config ansible > ssh_config
-scp -F ssh_config .vagrant/machines/develop/virtualbox/private_key ansible:.ssh/id_rsa
+vagrant ssh-config > ssh_config
+scp -F ssh_config [ssh_configにかかれているdevelopのprivate_key] ansible:.ssh/id_rsa
 vagrant ssh ansible
 chmod 600 .ssh/id_rsa
 ```
 
 2. sshできるか確認
 ```
-ansible -i hosts 192.168.33.12 -m ping
+cd ~/ansible/playbooks
+ansible -i ../hosts 192.168.33.12 -m ping
 ```
 
 3. ansibleの実行
