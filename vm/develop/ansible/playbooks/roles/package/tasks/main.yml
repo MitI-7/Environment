@@ -1,6 +1,6 @@
 ---
 - name: install basic pkg
-  apt: name={{item}} state=installed update_cache=yes
+  yum: name={{item}} state=installed update_cache=yes
   become: yes
   with_items:
   - vim
@@ -10,6 +10,3 @@
   - build-essential
   - make
   - curl
-  - task-japanese
-  - fcitx
-  - fcitx-mozc
