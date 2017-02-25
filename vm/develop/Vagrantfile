@@ -44,9 +44,6 @@ Vagrant.configure(2) do |config|
       if [ ! -e $HOME/ansible/playbooks/roles/tersmitten.pycharm ]; then
         ansible-galaxy install tersmitten.pycharm -p $HOME/ansible/playbooks/roles
       fi
-      if [ ! -e $HOME/ansible/playbooks/roles/ansible-clion ]; then
-        git clone https://github.com/MitI-7/ansible-clion.git $HOME/ansible/playbooks/roles/ansible-clion
-      fi
       if [ ! -e $HOME/ansible/playbooks/roles/cmprescott.chrome ]; then
         ansible-galaxy install cmprescott.chrome -p $HOME/ansible/playbooks/roles
       fi
