@@ -7,7 +7,10 @@ vagrant box add debian-8.1.0 https://github.com/kraksoft/vagrant-box-debian/rele
 ```
 "rsync" could not be found on your PATH. Make sure that rsync is properly installed on your system and available on the PATH.
 ```
-が出た場合は_Vagrantfileを編集する
+が出た場合はもとのvagrantfileに以下を追加する
+```
+config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+```
 
 3. ansibleからdevelopにsshできるようにする
 ```
