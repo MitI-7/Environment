@@ -1,0 +1,3 @@
+---
+# vars file for clion
+clion_downloads_path: /var/lib/ansible/clion/downloads

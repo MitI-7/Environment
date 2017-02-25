@@ -1,0 +1,36 @@
+---
+# tasks file for clion
+- name: create (download) directory
+  file:
+    path: "{{ clion_downloads_path }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - configuration
+    - clion
+    - clion-download
+
+- name: download
+  get_url:
+    url: "https://download.jetbrains.com/cpp/CLion-{{ clion_version }}.tar.gz"
+    dest: "{{ clion_downloads_path }}/clion-{{ clion_version }}.tar.gz"
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - configuration
+    - clion
+    - clion-downloads
+
+- name: install
+  unarchive:
+    src: "{{ clion_downloads_path }}/clion-{{ clion_version }}.tar.gz"
+    dest: "{{ clion_install_prefix }}"
+    creates: "{{ clion_install_prefix }}/clion-{{ pycharm_version }}"
+    copy: false
+  tags:
+    - configuration
+    - clion
+    - clion-install
