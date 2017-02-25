@@ -10,4 +10,4 @@
   roles:
     - { role: cmprescott.chrome}
     - { role: tersmitten.pycharm }
-    - { role: ansible-clion }
+    - { role: clion }
