@@ -1,0 +1,49 @@
+---
+- name: mecabのダウンロード
+  args:
+    creates: ~/mecab-0.996.tar.gz
+  shell: wget -O mecab-0.996.tar.gz "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7cENtOXlicTFaRUE"
+  
+- name: mecabのインストール
+  args:
+    creates: /usr/local/bin/mecab
+  become: yes  
+  shell: '{{item.cmd}}'
+  with_items:
+    - cmd: tar xvf mecab-0.996.tar.gz
+    - cmd: cd mecab-0.996
+    - cmd: ./configure --with-charset=utf8 --enable-utf8-only
+    - cmd: make
+    - cmd: make install
+
+- name: IPA辞書のダウンロード
+  args:
+    creates: ~/mecab-ipadic-2.7.0-20070801.tar.gz
+  shell: wget -O mecab-ipadic-2.7.0-20070801.tar.gz "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7MWVlSDBCSXZMTXM"
+  
+- name: IPA辞書のインストール
+  args:
+    creates: /usr/local/lib/mecab/dic/ipadic
+  become: yes
+  shell: '{{item.cmd}}'
+  with_items:
+    - cmd: tar xzvf mecab-ipadic-2.7.0-20070801.tar.gz
+    - cmd: cd mecab-ipadic-2.7.0-20070801
+    - cmd: ./configure --with-charset=utf8
+    - cmd: ldconfig
+    - cmd: make
+    - cmd: make install
+    
+- name: neologdのダウンロード
+  args:
+    creates: ~/mecab-ipadic-neologd
+  shell: git clone https://github.com/neologd/mecab-ipadic-neologd.git
+  
+- name: neologdのインストール
+  args:
+    creates: ~/.pyenv TODO
+  shell: '{{item.cmd}}'
+  with_items:
+    - cmd: cd mecab-ipadic-neologd/
+    - cmd: bin/install-mecab-ipadic-neologd -n -y
+
