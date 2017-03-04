@@ -1,0 +1,14 @@
+---
+- hosts: develop
+  roles:
+    - { role: package }
+    - { role: common }
+    - { role: develop }
+
+- hosts: develop
+  become: yes
+  roles:
+    - { role: cmprescott.chrome }
+    - { role: tersmitten.pycharm, pycharm_version: '2016.3.2' }
+    - { role: clion }
+    - { role: gantsign.intellij }

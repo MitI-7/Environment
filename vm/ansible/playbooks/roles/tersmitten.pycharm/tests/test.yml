@@ -1,0 +1,7 @@
+# test file for pycharm
+---
+- hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - ../../

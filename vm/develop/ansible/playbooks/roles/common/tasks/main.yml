@@ -1,8 +1,0 @@
----  
-- name: git clone competitive programming
-  git: repo="git@github.com:MitI-7/CompetitiveProgramming.git" dest=~/src/ version=master accept_hostkey=yes
-  ignore_errors: True
-
-- name: git clone competitive programming
-  git: repo="git@github.com:MitI-7/Environment.git" dest=~/src/ version=master accept_hostkey=yes
-  ignore_errors: True
