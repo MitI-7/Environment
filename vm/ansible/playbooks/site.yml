@@ -9,6 +9,14 @@
   become: yes
   roles:
     - { role: cmprescott.chrome }
-    - { role: tersmitten.pycharm, pycharm_version: '2016.3.2' }
-    - { role: clion }
-    - { role: gantsign.intellij }
+    - { role: tersmitten.pycharm,
+              pycharm_version: '2016.3.2',
+              pycharm_install_prefix: '/opt/jetbrains'}
+    - { role: clion,
+              clion_version: '2016.3.3',
+              clion_install_prefix: '/opt/jetbrains' }
+    - { role: gantsign.intellij,
+        intellij_edition: 'ultimate',
+        intellij_install_dir: "/opt/jetbrains/idea-{{ intellij_edition }}-{{ intellij_version }}",
+        intellij_version: '2016.3.4'}
+
