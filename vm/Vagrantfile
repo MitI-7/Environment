@@ -8,9 +8,9 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = "ubuntu1604"
   config.vm.network :forwarded_port, guest: 22, host: 2226, id: "ssh"
   config.vm.network :private_network, ip: "192.168.33.12", auto_config: false
-  #config.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=777", "fmode=666"]
+  config.vm.synced_folder "./share", "/vagrant"
     
-  # vagrant up, vagrant provisionÀs‚Ì‚İ
+  # vagrant up, vagrant provisionå®Ÿè¡Œæ™‚ã®ã¿
   if ARGV[0] == "up" || ARGV[0] == "provision" then
     config.vm.provision "ansible_local" do |ansible|
       ansible.inventory_path = "./ansible/playbooks/hosts/local"
