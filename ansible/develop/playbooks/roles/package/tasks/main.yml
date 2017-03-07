@@ -6,6 +6,7 @@
   - vim
   - git
   - zsh
+  - tmux
   - zip
   - build-essential
   - make
@@ -14,3 +15,4 @@
   - default-jre
   - default-jdk
   - maven
+  - haskell-platform
