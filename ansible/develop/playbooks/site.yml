@@ -12,14 +12,14 @@
     - { role: gantsign.intellij,
         intellij_edition: 'ultimate',
         intellij_install_dir: "/opt/jetbrains/idea-{{ intellij_edition }}-{{ intellij_version }}",
-        intellij_version: '2016.3.4',
+        intellij_version: '2016.3.5',
         intellij_default_maven_home: '/usr/share/maven/bin',
         intellij_default_jdk_home: '/usr/lib/jvm/default-java'}
         
     - { role: tersmitten.pycharm,
-              pycharm_version: '2016.3.2',
+              pycharm_version: '2016.3.3',
               pycharm_install_prefix: '/opt/jetbrains'}
     - { role: clion,
-              clion_version: '2016.3.3',
+              clion_version: '2016.3.4',
               clion_install_prefix: '/opt/jetbrains' }
 
