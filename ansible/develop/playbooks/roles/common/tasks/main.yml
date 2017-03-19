@@ -1,0 +1,16 @@
+---
+- name: pecoのダウンロード
+  args:
+    creates: ~/peco_linux_amd64.tar.gz
+  shell: wget -O peco_linux_amd64.tar.gz "https://github.com/peco/peco/releases/download/v0.5.0/peco_linux_amd64.tar.gz"
+  
+- name: pecoのインストール
+  args:
+    creates: /usr/local/bin/peco_linux_amd64
+  become: yes  
+  shell: '{{item.cmd}}'
+  with_items:
+    - cmd: tar xvf peco_linux_amd64.tar.gz
+    - cmd: rm peco_linux_amd64.tar.gz
+    - cmd: mv peco_linux_amd64 /usr/local/bin
+    
