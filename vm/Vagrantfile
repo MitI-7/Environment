@@ -1,0 +1,37 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu1604"
+  config.ssh.username = 'vagrant'
+  config.ssh.password = 'vagrant'
+  config.vm.hostname = "ubuntu1604"
+  config.vm.network :forwarded_port, guest: 22, host: 2226, id: "ssh"
+  config.vm.network "forwarded_port", guest: 80, host: 10080
+  config.vm.network :private_network, ip: "192.168.33.12", auto_config: false
+  config.vm.synced_folder "./share", "/vagrant"
+  
+  # ansibleのclone
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get -y install git
+    cd /vagrant
+    git clone https://github.com/MitI-7/Environment.git
+  SHELL
+    
+  # vagrant up, vagrant provision実行時のみ
+  if ARGV[0] == "up" || ARGV[0] == "provision" then
+    config.vm.provision "ansible_local" do |ansible|
+      ansible.inventory_path = "./Environment/ansible/develop/playbooks/hosts/local"
+      ansible.playbook = "./Environment/ansible/develop/playbooks/site.yml"
+      ansible.limit = "all"
+    end
+  end
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
+    vb.memory = "16384"
+    vb.customize ["modifyvm", :id, "--memory", "16384", "--cpus", "4", "--ioapic", "on"]
+  end
+
+  
+end
