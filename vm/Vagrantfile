@@ -15,7 +15,9 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get -y install git
     cd /vagrant
-    git clone https://github.com/MitI-7/Environment.git
+    if [ ! -s Environment ] ; then
+      git clone https://github.com/MitI-7/Environment.git
+    fi
   SHELL
     
   # vagrant up, vagrant provision実行時のみ
