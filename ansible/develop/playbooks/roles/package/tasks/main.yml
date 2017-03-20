@@ -14,5 +14,6 @@
   - ntp
   - default-jre
   - default-jdk
+  - icedtea-netx
   - maven
   - haskell-platform
