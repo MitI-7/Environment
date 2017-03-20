@@ -1,0 +1,10 @@
+---
+- name: install FiraCode
+  args:
+    creates: /usr/local/bin/mecab
+  become: yes  
+  shell: '{{item.cmd}}'
+  with_items:
+    - cmd: mkdir -p ~/.fonts/
+    - cmd: wget https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Regular.ttf?raw=true -O ~/.fonts/FiraCode-Regular.ttf
+    - cmd: fc-cache -v

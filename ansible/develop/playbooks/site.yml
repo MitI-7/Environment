@@ -4,6 +4,7 @@
     - { role: package }
     - { role: common }
     - { role: develop }
+    - { role: font }
 
 - hosts: develop
   become: yes
