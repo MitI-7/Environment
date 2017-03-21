@@ -15,7 +15,8 @@
         intellij_install_dir: "/opt/jetbrains/idea-{{ intellij_edition }}-{{ intellij_version }}",
         intellij_version: '2016.3.5',
         intellij_default_maven_home: '/usr/share/maven/bin',
-        intellij_default_jdk_home: '/usr/lib/jvm/default-java'}
+        intellij_default_jdk_home: '/usr/lib/jvm/default-java',
+        intellij_redis_sha256sum: '06c2e63771d838ee435d5da75ac887fc67e184f647b318e3a41fee1f25cd5cf5'}
         
     - { role: tersmitten.pycharm,
               pycharm_version: '2016.3.3',
