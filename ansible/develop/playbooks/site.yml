@@ -13,15 +13,15 @@
     - { role: gantsign.intellij,
         intellij_edition: 'ultimate',
         intellij_install_dir: "/opt/jetbrains/idea-{{ intellij_edition }}-{{ intellij_version }}",
-        intellij_version: '2016.3.5',
+        intellij_version: '2017.1.2',
         intellij_default_maven_home: '/usr/share/maven/bin',
         intellij_default_jdk_home: '/usr/lib/jvm/default-java',
-        intellij_redis_sha256sum: '06c2e63771d838ee435d5da75ac887fc67e184f647b318e3a41fee1f25cd5cf5'}
+        intellij_redis_sha256sum: '1f3634dcd805b67e29a479fd4baf4310d2a19f0e40136853f2bf64dc9adba3c6'}
         
     - { role: tersmitten.pycharm,
-              pycharm_version: '2016.3.3',
+              pycharm_version: '2017.1.2',
               pycharm_install_prefix: '/opt/jetbrains'}
     - { role: clion,
-              clion_version: '2016.3.4',
+              clion_version: '2017.1.1',
               clion_install_prefix: '/opt/jetbrains' }
 
