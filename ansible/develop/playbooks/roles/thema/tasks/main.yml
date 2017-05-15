@@ -1,0 +1,15 @@
+---
+- name: Flat-platのダウンロード
+  become: yes
+  args:
+    creates: ~/v20170323.tar.gz
+  shell: wget https://github.com/nana-4/Flat-Plat/archive/v20170323.tar.gz
+  
+- name: Flat-platのインストール
+  args:
+    creates: /usr/share/themes/Flat-Plat
+  become: yes  
+  shell: '{{item.cmd}}'
+  with_items:
+    - cmd: tar xzf v20170323.tar.gz
+    - cmd: ./Flat-Plat-20170323/install.sh

@@ -1,4 +1,8 @@
 ---
+- name: papirus-icon-theme
+  become: yes
+  apt_repository: repo="ppa:papirus/papirus/"
+
 - name: install basic pkg
   apt: name={{item}} state=installed update_cache=yes
   become: yes
@@ -17,3 +21,7 @@
   - icedtea-netx
   - maven
   - haskell-platform
+  - unity-tweak-tool 
+  - plank
+  - papirus-icon-theme
+
