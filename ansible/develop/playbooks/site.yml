@@ -5,6 +5,7 @@
     - { role: common }
     - { role: develop }
     - { role: font }
+    - { role: mecab }
 
 - hosts: develop
   become: yes
