@@ -19,42 +19,24 @@
     - 'export PYENV_ROOT=~/.pyenv'
     - 'export PATH=$PYENV_ROOT/bin:$PATH'
     - 'eval "$(pyenv init -)"'
-    - 'export PATH="$PYENV_ROOT/versions/anaconda3-4.3.1/bin/:$PATH"'
+    - 'export PATH="$PYENV_ROOT/versions/anaconda3-4.4.0/bin/:$PATH"'
 
 - name: anacondaをインストール
   args:
-    creates: ~/.pyenv/versions/anaconda3-4.3.1
-  shell: bash -lc "pyenv install anaconda3-4.3.1"
+    creates: ~/.pyenv/versions/anaconda3-4.4.0
+  shell: bash -lc "pyenv install anaconda3-4.4.0"
  
 - name: anaconda rehash
   args:
-    creates: ~/.pyenv/versions/anaconda3-4.3.1
+    creates: ~/.pyenv/versions/anaconda3-4.4.0
   shell: bash -lc "pyenv rehash"
   
 - name: anaconda global
   args:
-    creates: ~/.pyenv/versions/anaconda3-4.3.1
-  shell: bash -lc "pyenv global anaconda3-4.3.1"
+    creates: ~/.pyenv/versions/anaconda3-4.4.0
+  shell: bash -lc "pyenv global anaconda3-4.4.0"
   
 - name: anaconda update
   args:
-    creates: ~/.pyenv/versions/anaconda3-4.3.1
+    creates: ~/.pyenv/versions/anaconda3-4.4.0
   shell: bash -lc "conda update conda"
-
-- name: python2.7インストール可否チェック
-  shell: bash -lc "conda info -e | grep 'python2.7'"
-  register: result
-  failed_when: result.rc not in [0, 1]
-
-- name: python2.7インストール
-  shell: bash -lc "conda create -n python2.7 python=2.7 anaconda -y"
-  when: result.rc != 0
-
-- name: python3.5インストール可否チェック
-  shell: bash -lc "conda info -e | grep 'python3.5'"
-  register: result
-  failed_when: result.rc not in [0, 1]
-
-- name: python3.5インストール
-  shell: bash -lc "conda create -n python3.5 python=3.5 anaconda -y"
-  when: result.rc != 0
