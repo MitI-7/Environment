@@ -11,6 +11,13 @@
   shell: '{{item.cmd}}'
   with_items:
     - cmd: tar xvf peco_linux_amd64.tar.gz
-    - cmd: rm peco_linux_amd64.tar.gz
     - cmd: mv peco_linux_amd64 /usr/local/bin
     
+- name: pecoの削除
+  file:
+    state: absent
+    path: ~/peco_linux_amd64.tar.gz
+    
+- name: zshをデフォルトに
+  become: yes
+  command: chsh -s '/bin/zsh' vagrant
