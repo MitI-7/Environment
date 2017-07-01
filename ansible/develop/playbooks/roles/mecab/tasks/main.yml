@@ -7,13 +7,22 @@
 - name: mecabのインストール
   args:
     creates: /usr/local/bin/mecab
-  become: yes  
+  become: yes
   shell: '{{item.cmd}}'
   with_items:
     - cmd: tar xvf mecab-0.996.tar.gz
     - cmd: cd mecab-0.996 && ./configure --with-charset=utf8 --enable-utf8-only
     - cmd: cd mecab-0.996 && make chdir=mecab-0.996
     - cmd: cd mecab-0.996 && make install chdir=mecab-0.996
+    - cmd: rm -rf ~/mecab-0.996.tar.gz
+    
+- name: mecabの削除
+  file:
+    state: absent
+    path: '{{ item }}'
+  with_items:
+    - ~/mecab-0.996
+    - ~/mecab-0.996.tar.gz
 
 - name: IPA辞書のダウンロード
   args:
@@ -32,6 +41,14 @@
     - cmd: cd mecab-ipadic-2.7.0-20070801 && make
     - cmd: cd mecab-ipadic-2.7.0-20070801 && make install
     
+- name: IPA辞書の削除
+  file:
+    state: absent
+    path: '{{ item }}'
+  with_items:
+    - ~/mecab-ipadic-2.7.0-20070801.tar.gz
+    - ~/mecab-ipadic-2.7.0-20070801
+    
 - name: neologdのダウンロード
   args:
     creates: ~/mecab-ipadic-neologd
@@ -39,8 +56,14 @@
   
 - name: neologdのインストール
   args:
-    creates: ~/.pyenv TODO
+    creates: /usr/local/lib/mecab/dic/mecab-ipadic-neologd
   shell: '{{item.cmd}}'
   with_items:
     - cmd: cd mecab-ipadic-neologd && bin/install-mecab-ipadic-neologd -n -y
 
+- name: mecabの削除
+  file:
+    state: absent
+    path: '{{ item }}'
+  with_items:
+    - ~/mecab-ipadic-neologd
