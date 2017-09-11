@@ -1,0 +1,4 @@
+cmprescott.chrome
+gantsign.intellij
+tersmitten.pycharm
+gantsign.visual-studio-code
