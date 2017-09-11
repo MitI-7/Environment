@@ -10,6 +10,7 @@
 - hosts: develop
   become: yes
   roles:
+    - { role: gantsign.visual-studio-code }
     - { role: cmprescott.chrome }
     - { role: gantsign.intellij,
         intellij_edition: 'ultimate',
