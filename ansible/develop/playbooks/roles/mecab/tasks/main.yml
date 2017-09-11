@@ -1,57 +1,13 @@
 ---
-- name: mecabのダウンロード
-  args:
-    creates: ~/mecab-0.996.tar.gz
-  shell: wget -O mecab-0.996.tar.gz "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7cENtOXlicTFaRUE"
-  
-- name: mecabのインストール
-  args:
-    creates: /usr/local/bin/mecab
-  become: yes
-  shell: '{{item.cmd}}'
-  with_items:
-    - cmd: tar xvf mecab-0.996.tar.gz
-    - cmd: cd mecab-0.996 && ./configure --with-charset=utf8 --enable-utf8-only
-    - cmd: cd mecab-0.996 && make chdir=mecab-0.996
-    - cmd: cd mecab-0.996 && make install chdir=mecab-0.996
-    - cmd: rm -rf ~/mecab-0.996.tar.gz
-    
-- name: mecabの削除
-  file:
-    state: absent
-    path: '{{ item }}'
+- name: install basic pkg
+  apt: name={{item}} state=installed update_cache=yes
   become: yes
   with_items:
-    - ~/mecab-0.996
-    - ~/mecab-0.996.tar.gz
+  - mecab
+  - libmecab-dev
+  - mecab-ipadic
+  - mecab-ipadic-utf8
 
-- name: IPA辞書のダウンロード
-  args:
-    creates: ~/mecab-ipadic-2.7.0-20070801.tar.gz
-  become: yes
-  shell: wget -O mecab-ipadic-2.7.0-20070801.tar.gz "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7MWVlSDBCSXZMTXM"
-  
-- name: IPA辞書のインストール
-  args:
-    creates: /usr/local/lib/mecab/dic/ipadic
-  become: yes
-  shell: '{{item.cmd}}'
-  with_items:
-    - cmd: tar xzvf mecab-ipadic-2.7.0-20070801.tar.gz
-    - cmd: cd mecab-ipadic-2.7.0-20070801 && ./configure --with-charset=utf8
-    - cmd: cd mecab-ipadic-2.7.0-20070801 && ldconfig
-    - cmd: cd mecab-ipadic-2.7.0-20070801 && make
-    - cmd: cd mecab-ipadic-2.7.0-20070801 && make install
-    
-- name: IPA辞書の削除
-  file:
-    state: absent
-    path: '{{ item }}'
-  become: yes
-  with_items:
-    - ~/mecab-ipadic-2.7.0-20070801.tar.gz
-    - ~/mecab-ipadic-2.7.0-20070801
-    
 - name: neologdのダウンロード
   args:
     creates: ~/mecab-ipadic-neologd
@@ -65,7 +21,7 @@
   with_items:
     - cmd: cd mecab-ipadic-neologd && bin/install-mecab-ipadic-neologd -n -y
 
-- name: mecabの削除
+- name: neologdの削除
   file:
     state: absent
     path: '{{ item }}'
