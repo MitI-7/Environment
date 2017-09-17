@@ -18,6 +18,7 @@ Vagrant.configure(2) do |config|
     if [ ! -s Environment ] ; then
       git clone https://github.com/MitI-7/Environment.git
       git config --global core.editor 'vim -c "set fenc=utf-8"'
+      ansible-galaxy install -r ./Environment/ansible/develop/requirements.txt -p ./Environment/ansible/develop/playbooks/roles
     fi
   SHELL
     
