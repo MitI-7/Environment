@@ -11,7 +11,6 @@
   become: yes
   roles:
     - { role: gantsign.visual-studio-code }
-    - { role: cmprescott.chrome }
     - { role: gantsign.intellij,
         intellij_edition: 'ultimate',
         intellij_install_dir: "/opt/jetbrains/idea-{{ intellij_edition }}-{{ intellij_version }}",
